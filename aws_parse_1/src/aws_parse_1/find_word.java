@@ -13,6 +13,10 @@ public class find_word {
 		int[] areaCode = {1,2,3,4,5,6,7,8,
 				31,32,33,34,35,36,37,38,39}; // 서울 인천 대전 대구 광주 부산 울산 세종 경기 강원 충북 충남 경북 경남 전북 전남 제주
 		
+		String[] regionName = {"Seoul","Incheon","Daejeon","Daegu","Gwangju","Busan","Ulsan",
+				"Sejong","Gyeongg-do","Gangwon-do","Chungchengbuk-do","Chungchengnam-do",
+				"Gyeongsangbuk-do","Gyeongsangnam-do","Jeollabuk-do","Jeollanam-do","JeJu-do",};
+		
 		StringTokenizer user2 = new StringTokenizer(user," .");
 		
 		String[] tlqkf = new String[user2.countTokens()] ;
@@ -23,18 +27,22 @@ public class find_word {
 			System.out.println(tlqkf[i++]);
 		}
 		
-		for(int j = 0; j < tlqkf.length ; j++) {
+		/*for(int j = 0; j < tlqkf.length ; j++) {
 			if (tlqkf[j].equals("Seoul"))
 				System.out.println(tlqkf[j]);
-		}
+		}*/
+		
+		System.out.println(findWord(tlqkf,regionName));
+		
 	}
 	
-	public static String djtlqkf(String[] arr, String arr2) {
-		for(int j = 0; j < arr.length ; j++) {
-			if (arr[j].equals("Seoul"))
-				arr2 = arr[j];
-			return arr2;
+	public static String findWord(String[] userArr, String[] targetArr) {
+		for(int i = 0; i < userArr.length; i++) {
+		for(int j = 0; j < targetArr.length ; j++) {
+			if (userArr[i].equals(targetArr[j]))
+				return targetArr[j];
+			}
 		}
-		return arr2;
+		return "-1";
 	}
 }
